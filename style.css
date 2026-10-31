@@ -36,11 +36,11 @@ button {
   cursor: pointer;
 }
 
-button: disabled {
+button:disabled {
   cursor: default;
 }
 
-a: focus-visible,button:focus-visible {
+a:focus-visible,button:focus-visible {
   outline: 3px solid #c79c47;
   outline-offset: 5px;
 }
@@ -1037,4 +1037,124 @@ summary {
 
 .structure-note {
   font-size: 12px;
+}
+
+/* MODE TERANG DAN GELAP
+   data-theme diatur oleh theme.js dan tombol pada script.js.
+   Warna identitas logo dipertahankan pada kedua mode. */
+:root {
+  color-scheme: light;
+  --header-background: #faf8f4f5;
+  --section-tint: #f1ebe8;
+  --hero-background: #650c25;
+  --badge-background: #e5e2d7;
+  --badge-text: #63593e;
+  --accent-text: #9e7b3b;
+  --toggle-background: #fffdf8;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #181316;
+  --ink: #f5edf0;
+  --muted: #c5b7bd;
+  --line: #44313a;
+  --header-background: #181316f5;
+  --section-tint: #241a20;
+  --hero-background: #3d0b1d;
+  --badge-background: #3d3223;
+  --badge-text: #ead2a0;
+  --accent-text: #d6b36c;
+  --toggle-background: #30212a;
+}
+
+header {
+  background: var(--header-background);
+}
+
+.tinted {
+  background: var(--section-tint);
+}
+
+.hero,
+.aspiration {
+  background: var(--hero-background);
+}
+
+.badge {
+  background: var(--badge-background);
+  color: var(--badge-text);
+}
+
+.number {
+  color: var(--accent-text);
+}
+
+:root[data-theme="dark"] .nav-cta {
+  border-color: var(--gold);
+}
+
+:root[data-theme="dark"] nav a:hover {
+  color: var(--gold);
+}
+
+.skip {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* Ruang untuk tombol mengambang agar tautan footer tetap mudah diakses. */
+footer {
+  padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px));
+}
+
+.theme-toggle {
+  position: fixed;
+  right: calc(20px + env(safe-area-inset-right, 0px));
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--toggle-background);
+  color: var(--ink);
+  box-shadow: 0 4px 20px #00000026;
+  font-size: 13px;
+  font-weight: 600;
+  touch-action: manipulation;
+}
+
+.theme-toggle:hover {
+  border-color: var(--gold);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.theme-icon {
+  flex-shrink: 0;
+}
+
+.theme-icon-sun,
+:root[data-theme="dark"] .theme-icon-moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .theme-toggle {
+    right: calc(16px + env(safe-area-inset-right, 0px));
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    padding: 11px 15px;
+  }
 }

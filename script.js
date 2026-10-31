@@ -44,3 +44,41 @@ document.addEventListener('keydown', (event) => {
 
 // Perbarui tahun hak cipta secara otomatis.
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// MODE TERANG / GELAP
+const themeToggle = document.getElementById('theme-toggle');
+const themeLabel = document.getElementById('theme-toggle-label');
+const root = document.documentElement;
+const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+function applyTheme(theme) {
+  const isDark = theme === 'dark';
+  root.dataset.theme = theme;
+  themeLabel.textContent = isDark ? 'Mode terang' : 'Mode gelap';
+  themeToggle.setAttribute('aria-label', isDark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap');
+  themeToggle.setAttribute('aria-pressed', String(isDark));
+  themeToggle.title = isDark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap';
+  document.querySelector('meta[name="theme-color"]').content = isDark ? '#181316' : '#650c25';
+}
+
+applyTheme(root.dataset.theme || (systemTheme.matches ? 'dark' : 'light'));
+themeToggle.hidden = false;
+
+themeToggle.addEventListener('click', () => {
+  const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+  root.dataset.themePreference = 'manual';
+  applyTheme(nextTheme);
+
+  try {
+    localStorage.setItem('mpk-theme', nextTheme);
+  } catch {
+    // Jika penyimpanan diblokir, pilihan tetap berlaku selama halaman ini dibuka.
+  }
+});
+
+// Ikuti perubahan tema perangkat selama pengunjung belum memilih tema sendiri.
+systemTheme.addEventListener('change', (event) => {
+  if (root.dataset.themePreference === 'system') {
+    applyTheme(event.matches ? 'dark' : 'light');
+  }
+});
