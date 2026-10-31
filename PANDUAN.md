@@ -1,56 +1,65 @@
 # Panduan Website MPK SMANSAPA
 
-Website statis HTML/CSS/JavaScript. Tidak membutuhkan instalasi dependency. Draf berada pada branch `website-mpk-draft`; `index.html` di root kompatibel dengan GitHub Pages.
+Website ini menggunakan HTML, CSS, dan JavaScript biasa tanpa instalasi dependency.
 
-## Tema dan aset
+## Susunan file
 
-Tema merah marun, emas, putih, dan aksen gelap mengikuti logo yang diberikan. Logo asli disimpan di `assets/logo-mpk.png` dan digunakan pada header, beranda, footer, serta favicon. Gambar yang diberikan berukuran 150 × 150 piksel; Anda dapat menggantinya dengan PNG beresolusi lebih tinggi pada jalur yang sama.
+- `index.html`: seluruh isi halaman, nama pengurus, foto, dokumentasi, dan tautan.
+- `style.css`: warna, font, jarak, ukuran foto, dan tata letak responsif.
+- `script.js`: interaksi menu navigasi dan tahun hak cipta otomatis.
+- `assets/`: logo, gambar placeholder, dan foto yang Anda tambahkan.
 
-Tersedia empat tempat foto pengurus dan tiga tempat dokumentasi. Ini adalah placeholder, bukan foto atau kegiatan nyata:
+Tidak ada lagi `MPK_DATA` atau generator kartu. Edit setiap kartu langsung di HTML. Komentar seperti `KEPENGURUSAN INTI` dan `DOKUMENTASI KEGIATAN` menandai bagian halaman.
 
-- `assets/foto-pengurus.svg`: tempat foto pengurus.
-- `assets/dokumentasi.svg`: tempat foto kegiatan.
+## Mengubah pengurus
 
-## Menambah nama dan foto pengurus
+1. Unggah foto ke folder `assets/`, misalnya `ketua.jpg`.
+2. Buka `index.html`, cari komentar `Pengurus: Ketua MPK`.
+3. Ganti `src="assets/foto-pengurus.svg"` dengan `src="assets/ketua.jpg"` pada kartu itu.
+4. Sesuaikan `alt` foto, jabatan dalam `<h3>`, dan nama dalam `<p>`.
+5. Edit teks periode pada elemen `id="period"`.
 
-1. Unggah foto ke folder `assets/`, misalnya `ketua.jpg`, `wakil.jpg`, `sekretaris.jpg`, dan `bendahara.jpg`.
-2. Buka `index.html` dan cari `const MPK_DATA` di bagian bawah.
-3. Isi `name` dan ganti `photo` pada masing-masing anggota. Contoh bentuk data:
+Setiap pengurus memiliki `<article class="person">` sendiri. Salin atau hapus satu blok artikel lengkap untuk menambah atau mengurangi pengurus.
 
-```js
-{role: 'Ketua MPK', name: 'NAMA PENGURUS', photo: 'assets/ketua.jpg'}
+## Mengubah dokumentasi
+
+Cari komentar `Dokumentasi 01`, `02`, atau `03`. Pada kartu yang ingin diisi:
+
+1. Ganti `src` gambar dengan foto Anda, misalnya `assets/kegiatan-01.jpg`.
+2. Sesuaikan `alt` agar menjelaskan isi foto.
+3. Ganti judul `<h3>` dan keterangan `<p>`.
+4. Hapus `<span class="badge">FOTO BELUM DITAMBAHKAN</span>` setelah foto asli dipasang.
+5. Tambahkan tanggal jika diperlukan. Contoh:
+
+```html
+<time datetime="2026-10-31">31 Oktober 2026</time>
 ```
 
-Sesuaikan jumlah anggota dan jabatan pada daftar `members` dengan struktur sebenarnya. Isi `period` dengan periode kepengurusan. Jika nama belum diisi, website menampilkan “Nama belum dicantumkan”.
+Salin satu blok `<article class="event">` lengkap untuk menambah dokumentasi. Gunakan foto yang diizinkan untuk dipublikasikan.
 
-## Menambah dokumentasi kegiatan
+## Memasang tautan Google Form
 
-1. Unggah foto, misalnya `assets/kegiatan-01.jpg`.
-2. Ubah salah satu entri `activities` menjadi data kegiatan sebenarnya:
+Cari `id="form-pending"` pada bagian `RUANG ASPIRASI`. Ganti tombol nonaktif tersebut dengan tautan berikut dan isi URL sebenarnya:
 
-```js
-{
-  title: 'NAMA KEGIATAN',
-  date: '2026-10-31',
-  description: 'KETERANGAN KEGIATAN',
-  photo: 'assets/kegiatan-01.jpg',
-  alt: 'DESKRIPSI ISI FOTO',
-  placeholder: false
-}
+```html
+<a
+  class="button"
+  href="TAUTAN_GOOGLE_FORM_ANDA"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Buka formulir aspirasi ↗
+</a>
 ```
 
-Tanggal menggunakan YYYY-MM-DD. `placeholder: false` menghilangkan label “FOTO BELUM DITAMBAHKAN”. Tambahkan atau hapus entri untuk mengubah jumlah kartu. Gunakan foto yang diizinkan untuk dipublikasikan. Jika foto gagal dimuat, website menampilkan keterangan foto belum tersedia.
+Sesuaikan keterangan di `id="form-note"`, misalnya: “Formulir dibuka di tab baru. Baca keterangan formulir sebelum mengirim.” Pengaturan identitas/anonimitas mengikuti Google Form. Website tidak menyimpan jawaban.
 
-## Mengaktifkan Google Form
+## Tema dan tampilan responsif
 
-Isi `aspirationFormUrl` dengan tautan HTTPS resmi dari `forms.gle` atau `docs.google.com/forms/`. Tombol tetap nonaktif jika tautan kosong atau tidak valid. Identitas/anonimitas dan persyaratan login mengikuti pengaturan Google Form. Website tidak menyimpan jawaban.
+Warna pada bagian `:root` di `style.css` mengikuti logo marun–emas. Logo asli berada di `assets/logo-mpk.png`. File yang diberikan berukuran 150 × 150 piksel dan dapat diganti dengan PNG resolusi lebih tinggi pada jalur yang sama.
 
-## Menyesuaikan profil dan menerbitkan
+Aturan `@media` di `style.css` mengatur layout tablet dan ponsel. Navigasi menjadi menu lipat pada layar sampai 1000px. Jika batas ini diubah, sesuaikan juga `matchMedia` di `script.js`.
 
-Edit teks pada bagian `#tentang` sesuai profil/tugas MPK resmi sekolah. Susunan jabatan dan profil awal masih perlu disesuaikan. Hapus label draf setelah konten siap.
+## Menerbitkan perubahan
 
-Tinjau `index.html` di browser, kemudian gabungkan pull request ke `main` bila ingin mengganti website utama. Di Settings → Pages, pastikan sumber publikasi sesuai (misalnya Deploy from a branch → main → /root). Penggabungan tidak otomatis mengaktifkan Pages yang belum dikonfigurasi.
-
-## Pemeriksaan
-
-Sintaks JavaScript, tampilan desktop, pemuatan logo dan placeholder, navigasi, FAQ, dan tombol formulir kosong diperiksa. CSS memiliki breakpoint ponsel; perangkat seluler nyata dan URL Google Form aktual belum diuji. Data pengurus, kegiatan, dan tautan formulir belum diisi. Referensi EXO dan Instagram belum berhasil dibaca saat pembuatan draf.
+Edit file pada branch `main` dan simpan commit. GitHub Pages akan menjalankan build dan deployment. Periksa hasilnya melalui tab Actions. Profil organisasi, nama, periode, foto, serta Google Form tetap perlu diisi sesuai data resmi.
