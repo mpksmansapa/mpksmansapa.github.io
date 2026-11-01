@@ -1157,3 +1157,50 @@ footer {
     bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   }
 }
+
+/* Kelompok kepengurusan: inti dan komisi. */
+.leadership-group + .leadership-group {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.leadership-title {
+  margin: 0 0 24px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.65rem;
+  font-weight: 400;
+}
+
+.person h4 {
+  margin: 18px 0 0;
+  font-size: 1.14rem;
+  line-height: 1.4;
+}
+
+.people--core {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.people--commission {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 760px;
+}
+
+@media (max-width: 1100px) {
+  .people--core {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .people--core,
+  .people--commission {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .person h4 {
+    margin-top: 14px;
+    font-size: 18px;
+  }
+}
