@@ -1166,10 +1166,22 @@ footer {
 }
 
 .leadership-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin: 0 0 24px;
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.65rem;
   font-weight: 400;
+}
+
+/* Penanda dekoratif untuk setiap kategori kepengurusan. */
+.leadership-title::before {
+  content: "";
+  flex: 0 0 5px;
+  height: 1em;
+  border-radius: 999px;
+  background: var(--gold);
 }
 
 .person h4 {
