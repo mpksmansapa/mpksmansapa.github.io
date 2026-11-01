@@ -47,14 +47,12 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 // MODE TERANG / GELAP
 const themeToggle = document.getElementById('theme-toggle');
-const themeLabel = document.getElementById('theme-toggle-label');
 const root = document.documentElement;
 const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
 
 function applyTheme(theme) {
   const isDark = theme === 'dark';
   root.dataset.theme = theme;
-  themeLabel.textContent = isDark ? 'Mode terang' : 'Mode gelap';
   themeToggle.setAttribute('aria-label', isDark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap');
   themeToggle.setAttribute('aria-pressed', String(isDark));
   themeToggle.title = isDark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap';
