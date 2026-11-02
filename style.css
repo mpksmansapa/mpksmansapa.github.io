@@ -1216,3 +1216,27 @@ footer {
     font-size: 18px;
   }
 }
+
+/* Tautan dan halaman arsip kepengurusan. */
+.leadership-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-bottom: 24px;
+}
+.leadership-heading .leadership-title { margin-bottom: 0; }
+.archive-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-size: 14px;
+}
+.archive-intro .eyebrow { margin-top: 36px; }
+.archive-intro h1 {
+  color: var(--ink);
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+}
+.archive-intro .intro { max-width: 650px; }

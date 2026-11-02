@@ -4,7 +4,7 @@ Website ini menggunakan HTML, CSS, dan JavaScript biasa tanpa instalasi dependen
 
 ## Susunan file
 
-- `index.html`: seluruh isi halaman, nama pengurus, foto, dokumentasi, dan tautan.
+- `index.html`: isi halaman utama, nama pengurus, foto, dokumentasi, dan tautan.
 - `style.css`: warna, font, jarak, ukuran foto, dan tata letak responsif.
 - `script.js`: interaksi menu navigasi dan tahun hak cipta otomatis.
 - `assets/`: logo, gambar placeholder, dan foto yang Anda tambahkan.
@@ -14,9 +14,9 @@ Tidak ada lagi `MPK_DATA` atau generator kartu. Edit setiap kartu langsung di HT
 ## Mengubah pengurus
 
 1. Unggah foto ke folder `assets/`, misalnya `ketua.jpg`.
-2. Buka `index.html`, cari komentar `Pengurus: Ketua MPK`.
+2. Buka `index.html`, cari komentar `Kepengurusan Inti: Ketua`.
 3. Ganti `src="assets/foto-pengurus.svg"` dengan `src="assets/ketua.jpg"` pada kartu itu.
-4. Sesuaikan `alt` foto, jabatan dalam `<h3>`, dan nama dalam `<p>`.
+4. Sesuaikan `alt` foto, jabatan dalam `<h4>`, dan nama dalam `<p>`.
 5. Edit teks periode pada elemen `id="period"`.
 
 Setiap pengurus memiliki `<article class="person">` sendiri. Salin atau hapus satu blok artikel lengkap untuk menambah atau mengurangi pengurus.
@@ -56,10 +56,23 @@ Sesuaikan keterangan di `id="form-note"`, misalnya: “Formulir dibuka di tab ba
 
 ## Tema dan tampilan responsif
 
-Warna pada bagian `:root` di `style.css` mengikuti logo marun–emas. Logo asli berada di `assets/logo-mpk.png`. File yang diberikan berukuran 150 × 150 piksel dan dapat diganti dengan PNG resolusi lebih tinggi pada jalur yang sama.
+Warna pada bagian `:root` di `style.css` mengikuti logo marun–emas. Logo asli berada di `assets/logo-mpk.png`. Logo telah diperbarui menggunakan gambar resolusi lebih tinggi dengan latar transparan.
 
 Aturan `@media` di `style.css` mengatur layout tablet dan ponsel. Navigasi menjadi menu lipat pada layar sampai 1000px. Jika batas ini diubah, sesuaikan juga `matchMedia` di `script.js`.
 
 ## Menerbitkan perubahan
 
 Edit file pada branch `main` dan simpan commit. GitHub Pages akan menjalankan build dan deployment. Periksa hasilnya melalui tab Actions. Profil organisasi, nama, periode, foto, serta Google Form tetap perlu diisi sesuai data resmi.
+
+## Arsip kepengurusan inti
+
+Tautan di samping judul Kepengurusan Inti membuka `arsip-kepengurusan.html`.
+Halaman ini menggunakan `style.css`, `theme.js`, dan `script.js` yang sama dengan halaman utama.
+
+1. Ganti “Periode belum dicantumkan” dengan tahun kepengurusan sebenarnya.
+2. Isi nama dan ganti foto pada masing-masing dari enam kartu jabatan.
+3. Sesuaikan keterangan “Data pengurus pada periode ini belum dilengkapi.”
+4. Untuk periode tambahan, salin seluruh `<section class="section tinted" ...>` sampai penutupnya sebelum komentar `AKHIR PERIODE ARSIP`.
+5. Pada bagian salinan, ubah `archive-period-1` dan `archive-inti-1` menjadi ID unik (misalnya berakhiran `-2`), termasuk nilai `aria-labelledby` yang merujuknya.
+
+Semua data tetap diedit langsung satu per satu di HTML.
