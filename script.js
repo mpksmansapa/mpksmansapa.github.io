@@ -18,7 +18,7 @@ navigation.querySelectorAll('a').forEach((link) => {
 });
 
 // Tutup menu jika pengguna berpindah ukuran layar.
-const compactNavigation = window.matchMedia('(max-width: 1000px)');
+const compactNavigation = window.matchMedia('(max-width: 1100px)');
 compactNavigation.addEventListener('change', closeMenu);
 
 // Tutup menu saat mengetuk area di luar header.

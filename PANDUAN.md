@@ -58,7 +58,7 @@ Sesuaikan keterangan di `id="form-note"`, misalnya: “Formulir dibuka di tab ba
 
 Warna pada bagian `:root` di `style.css` mengikuti logo marun–emas. Logo asli berada di `assets/logo-mpk.png`. Logo telah diperbarui menggunakan gambar resolusi lebih tinggi dengan latar transparan.
 
-Aturan `@media` di `style.css` mengatur layout tablet dan ponsel. Navigasi menjadi menu lipat pada layar sampai 1000px. Jika batas ini diubah, sesuaikan juga `matchMedia` di `script.js`.
+Aturan `@media` di `style.css` mengatur layout tablet dan ponsel. Navigasi menjadi menu lipat pada layar sampai 1100px. Jika batas ini diubah, sesuaikan juga `matchMedia` di `script.js`.
 
 ## Menerbitkan perubahan
 
@@ -76,3 +76,13 @@ Halaman ini menggunakan `style.css`, `theme.js`, dan `script.js` yang sama denga
 5. Pada bagian salinan, ubah `archive-period-1`, `archive-inti-1`, `archive-komisi-1-period-1`, dan `archive-komisi-2-period-1` menjadi ID unik (misalnya berakhiran `-2`), termasuk nilai `aria-labelledby` yang merujuknya.
 
 Semua data tetap diedit langsung satu per satu di HTML.
+
+## Pendiri website
+
+Buka `pendiri.html`, lalu cari komentar `PENDIRI 1` dan `PENDIRI 2`.
+Ganti `src` foto dengan jalur foto di folder `assets/`, sesuaikan `alt`,
+isi nama pada `<h3>`, dan keterangan pada `<p>`.
+Kedua kartu tetap berdampingan pada layar HP.
+
+Tautan “Pendiri Website” tersedia pada navbar halaman utama, arsip, dan pendiri.
+Jika mengganti nama file halaman, sesuaikan tautannya di ketiga file HTML.
