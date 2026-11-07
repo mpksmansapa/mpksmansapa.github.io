@@ -5,8 +5,9 @@ Website ini menggunakan HTML, CSS, dan JavaScript biasa tanpa instalasi dependen
 ## Susunan file
 
 - `index.html`: isi halaman utama, nama pengurus, foto, dokumentasi, dan tautan.
-- `style.css`: warna, font, jarak, ukuran foto, dan tata letak responsif.
-- `script.js`: interaksi menu navigasi dan tahun hak cipta otomatis.
+- `css/style.css`: warna, font, jarak, ukuran foto, dan tata letak responsif.
+- `js/script.js`: interaksi menu navigasi, tombol tema, dan tahun hak cipta otomatis.
+- `js/theme.js`: menerapkan tema tersimpan sebelum halaman ditampilkan.
 - `assets/`: logo, gambar placeholder, dan foto yang Anda tambahkan.
 
 Tidak ada lagi `MPK_DATA` atau generator kartu. Edit setiap kartu langsung di HTML. Komentar seperti `KEPENGURUSAN INTI` dan `DOKUMENTASI KEGIATAN` menandai bagian halaman.
@@ -56,9 +57,9 @@ Sesuaikan keterangan di `id="form-note"`, misalnya: “Formulir dibuka di tab ba
 
 ## Tema dan tampilan responsif
 
-Warna pada bagian `:root` di `style.css` mengikuti logo marun–emas. Logo asli berada di `assets/logo-mpk.png`. Logo telah diperbarui menggunakan gambar resolusi lebih tinggi dengan latar transparan.
+Warna pada bagian `:root` di `css/style.css` mengikuti logo marun–emas. Logo asli berada di `assets/logo-mpk.png`. Logo telah diperbarui menggunakan gambar resolusi lebih tinggi dengan latar transparan.
 
-Aturan `@media` di `style.css` mengatur layout tablet dan ponsel. Navigasi menjadi menu lipat pada layar sampai 1100px. Jika batas ini diubah, sesuaikan juga `matchMedia` di `script.js`.
+Aturan `@media` di `css/style.css` mengatur layout tablet dan ponsel. Navigasi menjadi menu lipat pada layar sampai 1100px. Jika batas ini diubah, sesuaikan juga `matchMedia` di `js/script.js`.
 
 ## Menerbitkan perubahan
 
@@ -67,7 +68,7 @@ Edit file pada branch `main` dan simpan commit. GitHub Pages akan menjalankan bu
 ## Arsip kepengurusan
 
 Tautan di samping judul Kepengurusan Inti membuka `arsip-kepengurusan.html`.
-Halaman ini menggunakan `style.css`, `theme.js`, dan `script.js` yang sama dengan halaman utama.
+Halaman ini menggunakan `css/style.css`, `js/theme.js`, dan `js/script.js` yang sama dengan halaman utama.
 
 1. Ganti “Periode belum dicantumkan” dengan tahun kepengurusan sebenarnya.
 2. Isi nama dan ganti foto pada masing-masing dari sepuluh kartu jabatan: enam pengurus inti serta Ketua dan Wakil untuk Komisi 1 dan Komisi 2.
